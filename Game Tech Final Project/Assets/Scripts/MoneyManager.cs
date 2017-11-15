@@ -17,6 +17,8 @@ public class MoneyManager : MonoBehaviour {
 	void Start () {
 		CurrentMoney = 0;
 		AllTimeMoney = 0;
+
+		UpdateText ();
 	}
 
 	public bool Transaction (float MoneyChange) {
