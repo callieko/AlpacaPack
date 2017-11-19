@@ -13,7 +13,10 @@ public class MenuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		ShopMenu.SetActive (false);
+		WorkshopMenu.SetActive (false);
+		MaterialsMenu.SetActive (false);
+		SettingsMenu.SetActive (false);
 	}
 
 

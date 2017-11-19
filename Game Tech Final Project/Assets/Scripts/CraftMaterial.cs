@@ -5,16 +5,10 @@ using UnityEngine.UI;
 
 public class CraftMaterial : MonoBehaviour {
 
-	public string Name = "Default Material Name";
 	public float Value = 0;
-	public Mesh ObjectMesh;
-	public Image Thumbnail;
-
-	public GameObject MaterialListing;
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -22,8 +16,8 @@ public class CraftMaterial : MonoBehaviour {
 		
 	}
 
-	public GameObject GetListing() {
-		GameObject listing = Instantiate (MaterialListing);
-		return listing;
+	public Sprite GetThumbnail() {
+		Texture2D texture = UnityEditor.AssetPreview.GetMiniThumbnail (gameObject);
+		return Sprite.Create(texture, new Rect(0,0,texture.width,texture.height), new Vector2(0.5f,0.5f));
 	}
 }
