@@ -21,7 +21,7 @@ public class MoneyManager : MonoBehaviour {
 		UpdateText ();
 	}
 
-	public bool Transaction (float MoneyChange) {
+	public bool Transaction (double MoneyChange) {
 		if ((MoneyChange >= 0) || (MoneyChange < 0 && Math.Abs(MoneyChange) <= CurrentMoney)) {
 			CurrentMoney += MoneyChange;
 			AllTimeMoney += MoneyChange;

@@ -74,7 +74,7 @@ public class MenuManager : MonoBehaviour {
 	}
 
 	public void GoToItemCreation() {
-		SceneManager.LoadScene ("Item Creator");
+		SceneManager.LoadScene (2);
 
 	}
 }

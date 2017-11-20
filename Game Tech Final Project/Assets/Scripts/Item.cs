@@ -4,34 +4,38 @@ using UnityEngine;
 
 public class Item : MonoBehaviour {
 
-	public float AssignedValue = 0;
 	//public GameObject Mesh;
 	public string Name = "Default Item Name";
 	public List<Category> Categories = new List<Category>();
 	public List<CraftMaterial> Materials = new List<CraftMaterial>();
 
-	private float materialValue;
-	private int salePrice;
+	private double salePrice;
 
 	// Use this for initialization
 	void Start () {
-		foreach (CraftMaterial material in Materials) {
-			materialValue += material.Value;
-		}
 
 		salePrice = -1;
 	}
 
-	public float GetMaterialCost() {
+	public double GetMaterialCost() {
+		double materialValue = 0;
+		foreach (CraftMaterial material in Materials) {
+			materialValue += material.Value;
+		}
 		return materialValue;
 	}
 
 	public Sprite GetThumbnail() {
 		Texture2D texture = UnityEditor.AssetPreview.GetAssetPreview (gameObject);
+		if (texture == null) {
+			print ("Texture is null!");
+			texture = UnityEditor.AssetPreview.GetMiniThumbnail (gameObject);
+		}
+			
 		return Sprite.Create(texture, new Rect(0,0,texture.width,texture.height), new Vector2(0.5f,0.5f));
 	}
 
-	public float GetSalePrice() {
+	public double GetSalePrice() {
 		if (salePrice == -1)
 			return 0;
 		else
@@ -42,7 +46,7 @@ public class Item : MonoBehaviour {
 		return salePrice != -1;
 	}
 
-	public void Sell(int price) {
+	public void Sell(double price) {
 		salePrice = price;
 	}
 }

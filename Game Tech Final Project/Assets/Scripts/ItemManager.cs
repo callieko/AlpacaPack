@@ -13,6 +13,7 @@ public class ItemManager : MonoBehaviour {
 
 	public ShopManager Shop;
 
+
 	// Use this for initialization
 	void Start () {
 		MyItems = new Dictionary<GameObject, int> ();
@@ -25,6 +26,8 @@ public class ItemManager : MonoBehaviour {
 	}
 
 	public void MakeItem (GameObject itemObj) {
+		//GameObject itemObj = Instantiate (itemObj2);
+
 
 		if (MyItems.ContainsKey (itemObj)) {
 			MyItems [itemObj] = MyItems [itemObj] + 1;
