@@ -11,6 +11,8 @@ public class ItemManager : MonoBehaviour {
 	public GameObject ItemDisplay;
 	public GameObject ItemDisplayPanel;
 
+	public ShopManager Shop;
+
 	// Use this for initialization
 	void Start () {
 		MyItems = new Dictionary<GameObject, int> ();
@@ -70,7 +72,13 @@ public class ItemManager : MonoBehaviour {
 	}
 
 	public void SellItem (GameObject item) {
-
+		if (MyItems.ContainsKey (item) && MyItems[item] > 0) {
+			MyItems [item] -= 1;
+			if (MyItems [item] == 0)
+				MyItems.Remove (item);
+			item.GetComponent<Item> ().Sell (500);
+			Shop.DisplayItem (item);
+		}
 	}
 
 	public void GetMaterial (GameObject material) {

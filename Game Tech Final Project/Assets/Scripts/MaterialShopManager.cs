@@ -13,6 +13,8 @@ public class MaterialShopManager : MonoBehaviour {
 	public List<GameObject> MaterialsForSale;
 	public GameObject MaterialDisplayPanel;
 
+	public GameObject PopUpWindow;
+
 	// Use this for initialization
 	void Start () {
 		foreach (GameObject materialObject in MaterialsForSale) {
@@ -44,8 +46,25 @@ public class MaterialShopManager : MonoBehaviour {
 		if (Item.GetComponent<CraftMaterial>() != null) {
 			print ("Attempting to buy " + Item.name);
 			if (Wallet.Transaction (-Item.GetComponent<CraftMaterial> ().Value)) {
+				ShowPopUp ("Purchase Successful");
 				PlayerItems.GetMaterial (Item);
 			}
+			else
+				ShowPopUp ("Insufficient Funds");
 		}
+	}
+
+	public void ShowPopUp (string msg) {
+		GameObject parentCanvas = MaterialDisplayPanel.transform.parent.parent.parent.gameObject;
+		Vector3 center = parentCanvas.GetComponent<RectTransform> ().position;
+		GameObject window = Instantiate (PopUpWindow);//, new Vector3(center[0], center[1], 0), new Quaternion(0,0,0,0));
+		window.transform.GetChild (0).GetComponent<Text> ().text = msg;
+		window.transform.GetChild (2).GetComponent<Button> ().onClick.AddListener(delegate {DestroyWindow(window);});
+		window.transform.SetParent (parentCanvas.transform);
+		window.transform.Translate (new Vector3 (center [0], center [1], 0));
+	}
+
+	public void DestroyWindow (GameObject obj) {
+		Destroy (obj);
 	}
 }

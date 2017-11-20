@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
@@ -8,6 +10,8 @@ public class MenuManager : MonoBehaviour {
 	public GameObject WorkshopMenu;
 	public GameObject MaterialsMenu;
 	public GameObject SettingsMenu;
+
+	public GameObject PopUpWindow;
 
 	private GameObject currentMenu = null;
 
@@ -56,5 +60,21 @@ public class MenuManager : MonoBehaviour {
 			currentMenu = nextMenu;
 		else
 			currentMenu = null;
+	}
+
+	public void ShowPopUp (string msg) {
+		GameObject window = Instantiate (PopUpWindow);
+		window.transform.GetChild (0).GetComponent<Text> ().text = msg;
+		window.transform.GetChild (1).GetComponent<Button> ().onClick.AddListener(delegate {DestroyWindow(window);});
+		//window.transform.SetParent (MaterialDisplayPanel.transform);
+	}
+
+	public void DestroyWindow (GameObject obj) {
+		Destroy (obj);
+	}
+
+	public void GoToItemCreation() {
+		SceneManager.LoadScene ("Item Creator");
+
 	}
 }
