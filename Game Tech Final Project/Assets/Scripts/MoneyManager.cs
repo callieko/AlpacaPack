@@ -35,6 +35,6 @@ public class MoneyManager : MonoBehaviour {
 	void UpdateText () {
 		//DisplayMoney += (CurrentMoney - DisplayMoney) / (CurrentMoney - DisplayMoney);
 		//MoneyDisplay.text = Math.Round(DisplayMoney, 2) + "$";
-		MoneyDisplay.text = Math.Round(CurrentMoney, 2) + "$";
+		MoneyDisplay.text = "$" + Math.Round(CurrentMoney, 2);
 	}
 }

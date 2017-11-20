@@ -7,6 +7,9 @@ public class MaterialShopManager : MonoBehaviour {
 
 	public GameObject MaterialListing;
 
+	public MoneyManager Wallet;
+	public ItemManager PlayerItems;
+
 	public List<GameObject> MaterialsForSale;
 	public GameObject MaterialDisplayPanel;
 
@@ -22,7 +25,7 @@ public class MaterialShopManager : MonoBehaviour {
 			CraftMaterial singleMaterial = materialObject.GetComponent<CraftMaterial> ();
 
 			Image ImageComp = Image.GetComponent<Image> ();
-			ImageComp.sprite = singleMaterial.GetThumbnail();
+			ImageComp.sprite = singleMaterial.GetThumbnail ();
 
 			Text NameText = Name.GetComponent<Text> ();
 			NameText.text = materialObject.name;
@@ -30,7 +33,19 @@ public class MaterialShopManager : MonoBehaviour {
 			Text PriceText = Price.GetComponent<Text> ();
 			PriceText.text = "$" + singleMaterial.Value;
 
+			Button btn = listing.GetComponent<Button>();
+			btn.onClick.AddListener(delegate {BuyItem(materialObject);});
+
 			listing.transform.SetParent (MaterialDisplayPanel.transform);
+		}
+	}
+
+	public void BuyItem (GameObject Item) {
+		if (Item.GetComponent<CraftMaterial>() != null) {
+			print ("Attempting to buy " + Item.name);
+			if (Wallet.Transaction (-Item.GetComponent<CraftMaterial> ().Value)) {
+				PlayerItems.GetMaterial (Item);
+			}
 		}
 	}
 }
