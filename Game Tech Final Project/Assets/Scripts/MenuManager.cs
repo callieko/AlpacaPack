@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
+	/*
 	public GameObject ShopMenu;
 	public GameObject WorkshopMenu;
-	public GameObject MaterialsMenu;
+	public GameObject BuyShopMenu;
+	public GameObject ToolsShopMenu;
+	public GameObject MaterialsShopMenu;
 	public GameObject SettingsMenu;
+	*/
 
 	public GameObject PopUpWindow;
 
@@ -17,16 +21,18 @@ public class MenuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		/*
 		ShopMenu.SetActive (false);
 		WorkshopMenu.SetActive (false);
 		MaterialsMenu.SetActive (false);
 		SettingsMenu.SetActive (false);
+		*/
 	}
 
 
 	/* A function that is called by button that changes what menu is being shown */
-	public void ChangeMenu (int nextMenuIndex) {
-		//Find which menu the index is referring to
+	public void ChangeMenu (GameObject nextMenu) {
+		/*//Find which menu the index is referring to
 		GameObject nextMenu = null;
 		switch (nextMenuIndex) {
 		case 1:
@@ -36,12 +42,19 @@ public class MenuManager : MonoBehaviour {
 			nextMenu = WorkshopMenu;
 			break;
 		case 3:
-			nextMenu = MaterialsMenu;
+			nextMenu = BuyShopMenu;
 			break;
 		case 4:
 			nextMenu = SettingsMenu;
 			break;
-		}
+		case 5:
+			nextMenu = ToolsShopMenu;
+			break;
+		case 6:
+			nextMenu = MaterialsShopMenu;
+			break;
+		}*/
+
 
 		//Index does not refer to any menu
 		if (nextMenu == null)
