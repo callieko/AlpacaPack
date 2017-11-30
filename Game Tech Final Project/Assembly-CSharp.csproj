@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\MaterialShopManager.cs" />
      <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\MoneyManager.cs" />
+     <Compile Include="Assets\Scripts\onMouseDrag.cs" />
      <Compile Include="Assets\Scripts\ShopManager.cs" />
  <Reference Include="UnityEngine.UIAutomation">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
