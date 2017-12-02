@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class CraftMaterial : MonoBehaviour {
 
@@ -15,9 +18,14 @@ public class CraftMaterial : MonoBehaviour {
 	void Update () {
 		
 	}
-
+		
 	public Sprite GetThumbnail() {
+		#if UNITY_EDITOR
 		Texture2D texture = UnityEditor.AssetPreview.GetAssetPreview (gameObject);
 		return Sprite.Create(texture, new Rect(0,0,texture.width,texture.height), new Vector2(0.5f,0.5f));
+		#else
+
+		return null;
+		#endif
 	}
 }

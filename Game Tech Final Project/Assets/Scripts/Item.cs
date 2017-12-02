@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class Item : MonoBehaviour {
 
@@ -24,16 +27,21 @@ public class Item : MonoBehaviour {
 		}
 		return materialValue;
 	}
-
+		
 	public Sprite GetThumbnail() {
+		#if UNITY_EDITOR
 		Texture2D texture = UnityEditor.AssetPreview.GetAssetPreview (gameObject);
 		if (texture == null) {
 			print ("Texture is null!");
 			texture = UnityEditor.AssetPreview.GetMiniThumbnail (gameObject);
 		}
-			
 		return Sprite.Create(texture, new Rect(0,0,texture.width,texture.height), new Vector2(0.5f,0.5f));
+		#else
+
+		return null;
+		#endif
 	}
+
 
 	public double GetSalePrice() {
 		if (salePrice == -1)

@@ -89,6 +89,9 @@ public class MenuManager : MonoBehaviour {
 
 	public void GoToItemCreation() {
 		SceneManager.LoadScene (2);
+	}
 
+	public void GoToMainGame() {
+		SceneManager.LoadScene (1);
 	}
 }
