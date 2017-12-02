@@ -163,6 +163,7 @@
 'Assets/Scripts/MenuManager.cs'
 'Assets/Scripts/MoneyManager.cs'
 'Assets/Scripts/onMouseDrag.cs'
+'Assets/Scripts/RotateManager.cs'
 'Assets/Scripts/ShopManager.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Xml.Linq.dll'

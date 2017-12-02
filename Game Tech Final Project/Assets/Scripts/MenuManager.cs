@@ -27,6 +27,7 @@ public class MenuManager : MonoBehaviour {
 		MaterialsMenu.SetActive (false);
 		SettingsMenu.SetActive (false);
 		*/
+		Rect popUpRect = PopUpWindow.GetComponent<Rect> ();
 	}
 
 
