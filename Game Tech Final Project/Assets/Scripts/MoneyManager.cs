@@ -15,8 +15,8 @@ public class MoneyManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		CurrentMoney = 0;
-		AllTimeMoney = 0;
+		CurrentMoney = 50000;
+		AllTimeMoney = 50000;
 
 		UpdateText ();
 	}
