@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1440
     height: 765
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1440
     height: 715
-  m_MinSize: {x: 681, y: 492}
+  m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 49
+  controlID: 50
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 1093
     height: 715
-  m_MinSize: {x: 404, y: 492}
+  m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 50
+  controlID: 51
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,10 +154,10 @@ MonoBehaviour:
     y: 0
     width: 1093
     height: 444
-  m_MinSize: {x: 404, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 51
+  controlID: 52
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -176,8 +176,8 @@ MonoBehaviour:
     y: 0
     width: 229
     height: 444
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -201,8 +201,8 @@ MonoBehaviour:
     y: 0
     width: 864
     height: 444
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 12}
@@ -364,9 +364,9 @@ MonoBehaviour:
     height: 423
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: fe070000
     m_LastClickedID: 0
-    m_ExpandedIDs: 3a76f9fff276f9fffa77f9ff2078f9ff3678f9ff247ef9ffdc7ef9ffe67ff9ff0c80f9ff2280f9ff7489f9ffe489f9ffec8af9ff128bf9ff288bf9ffbe4afaffde50faff985cfaff685dfaff945efaffc05efaffc85efaff5863faffe063faff0c65faff3865faff4065faff3088faff429cfaff62a0faff9ca4faff14a5faff46a6faff52a6faff5ea6faff38c4faff62e0fcffa2e4fcffa8fafcff942efdffb836fdff6252fdff6e57fdff2263fdff4267fdff0871fdff1872fdfffa73fdff9876fdff1283fdffc6c3fdff5af2feff48f9feff7011ffffe412ffffa828ffff3841ffff6c5dffff08a6ffffaec0ffffa0fbffff00000000f8270000ac290000762a0000a22d0000b22d0000e42f000050300000ae300000ba320000f232000074330000e03300003e3400004a360000823600002c3800008a380000863a0000963a0000c63a0000ce3a0000544a0000724a00001e4b0000f84b00002e4c0000fc4d0000124e0000424e00009c4e00003e530000465a0000465b0000b65e0000bc5f00008262000098620000c862000022630000286300000e650000d4670000ea6700001a680000746800007a68000022760000387600004c7600006876000070760000be760000c276000096c20000e4c2000008c3000042c3000052c400002cc5000060c50000fed2000042d30000
+    m_ExpandedIDs: a6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -529,19 +529,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/linh/AlpacaPack/Game Tech Final Project
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c4270000
-    m_LastClickedID: 10180
-    m_ExpandedIDs: 00000000222700003a270000be27000000ca9a3bffffff7f
+    m_SelectedIDs: 3e270000
+    m_LastClickedID: 10046
+    m_ExpandedIDs: 00000000262700003e270000c227000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -569,7 +569,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000022270000be270000
+    m_ExpandedIDs: 00000000262700003e270000c2270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
