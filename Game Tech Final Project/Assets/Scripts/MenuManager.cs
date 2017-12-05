@@ -69,6 +69,13 @@ public class MenuManager : MonoBehaviour {
 		//for this menu while it is active
 		nextMenu.SetActive (!(nextMenu.activeInHierarchy));
 
+		// If the EditMenuManager menu was open and is toggled off,
+		// reset the currentEditMode to None to ensure the objects cannot be messed with.
+		EditMenuManager editMenuManager = GameObject.Find("EditMenuManager").GetComponent<EditMenuManager>();
+		if (editMenuManager != null) {
+			editMenuManager.currentEditMode = EditMenuManager.EditMode.None;
+		}
+
 		//Set currentMenu
 		if (nextMenu.activeSelf)
 			currentMenu = nextMenu;
