@@ -27,39 +27,12 @@ public class MenuManager : MonoBehaviour {
 		MaterialsMenu.SetActive (false);
 		SettingsMenu.SetActive (false);
 		*/
-		Rect popUpRect = PopUpWindow.GetComponent<Rect> ();
+		//Rect popUpRect = PopUpWindow.GetComponent<Rect> ();
 	}
 
 
 	/* A function that is called by button that changes what menu is being shown */
 	public void ChangeMenu (GameObject nextMenu) {
-		/*//Find which menu the index is referring to
-		GameObject nextMenu = null;
-		switch (nextMenuIndex) {
-		case 1:
-			nextMenu = ShopMenu;
-			break;
-		case 2:
-			nextMenu = WorkshopMenu;
-			break;
-		case 3:
-			nextMenu = BuyShopMenu;
-			break;
-		case 4:
-			nextMenu = SettingsMenu;
-			break;
-		case 5:
-			nextMenu = ToolsShopMenu;
-			break;
-		case 6:
-			nextMenu = MaterialsShopMenu;
-			break;
-		}*/
-
-
-		//Index does not refer to any menu
-		if (nextMenu == null)
-			return;
 			
 		//Hide the current menu, if there is one
 		if (currentMenu != null && currentMenu != nextMenu)
@@ -69,18 +42,21 @@ public class MenuManager : MonoBehaviour {
 		//for this menu while it is active
 		nextMenu.SetActive (!(nextMenu.activeInHierarchy));
 
+		//Set currentMenu
+		if (nextMenu.activeSelf)
+			currentMenu = nextMenu;
+		else
+			currentMenu = null;
+
+		//TODO HEY LINH! This part is causing a Null Pointer Exception in scenes other than the Item Creator.
+		//If you could find another wasy to do this that'd be ideal
+
 		// If the EditMenuManager menu was open and is toggled off,
 		// reset the currentEditMode to None to ensure the objects cannot be messed with.
 		EditMenuManager editMenuManager = GameObject.Find("EditMenuManager").GetComponent<EditMenuManager>();
 		if (editMenuManager != null) {
 			editMenuManager.currentEditMode = EditMenuManager.EditMode.None;
 		}
-
-		//Set currentMenu
-		if (nextMenu.activeSelf)
-			currentMenu = nextMenu;
-		else
-			currentMenu = null;
 	}
 
 	public void ShowPopUp (string msg) {
