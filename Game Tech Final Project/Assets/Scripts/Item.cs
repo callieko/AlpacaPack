@@ -5,18 +5,18 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-public class Item : MonoBehaviour {
+public class Item : ScriptableObject {
 
 	//public GameObject Mesh;
 	public string Name = "Default Item Name";
-	public List<Category> Categories = new List<Category>();
+	public Sprite Thumbnail;
+	public Category category;
 	public List<CraftMaterial> Materials = new List<CraftMaterial>();
 
 	private double salePrice;
 
 	// Use this for initialization
 	void Start () {
-
 		salePrice = -1;
 	}
 
@@ -29,17 +29,18 @@ public class Item : MonoBehaviour {
 	}
 		
 	public Sprite GetThumbnail() {
-		#if UNITY_EDITOR
-		Texture2D texture = UnityEditor.AssetPreview.GetAssetPreview (gameObject);
+		/*#if UNITY_EDITOR
+		Texture2D texture = UnityEditor.AssetPreview.GetAssetPreview (ObjectMesh);
 		if (texture == null) {
-			print ("Texture is null!");
-			texture = UnityEditor.AssetPreview.GetMiniThumbnail (gameObject);
+			//print ("Texture is null!");
+			texture = UnityEditor.AssetPreview.GetMiniThumbnail (ObjectMesh);
 		}
 		return Sprite.Create(texture, new Rect(0,0,texture.width,texture.height), new Vector2(0.5f,0.5f));
 		#else
 
 		return null;
-		#endif
+		#endif*/
+		return Thumbnail;
 	}
 
 

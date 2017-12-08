@@ -5,31 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
-	
-	/*
-	public GameObject ShopMenu;
-	public GameObject WorkshopMenu;
-	public GameObject BuyShopMenu;
-	public GameObject ToolsShopMenu;
-	public GameObject MaterialsShopMenu;
-	public GameObject SettingsMenu;
-	*/
 
 	public GameObject PopUpWindow;
 
 	private GameObject currentMenu = null;
-
-	// Use this for initialization
-	void Start () {
-		/*
-		ShopMenu.SetActive (false);
-		WorkshopMenu.SetActive (false);
-		MaterialsMenu.SetActive (false);
-		SettingsMenu.SetActive (false);
-		*/
-		//Rect popUpRect = PopUpWindow.GetComponent<Rect> ();
-	}
-
 
 	/* A function that is called by button that changes what menu is being shown */
 	public void ChangeMenu (GameObject nextMenu) {
@@ -48,15 +27,16 @@ public class MenuManager : MonoBehaviour {
 		else
 			currentMenu = null;
 
+
 		//TODO HEY LINH! This part is causing a Null Pointer Exception in scenes other than the Item Creator.
 		//If you could find another wasy to do this that'd be ideal
 
 		// If the EditMenuManager menu was open and is toggled off,
 		// reset the currentEditMode to None to ensure the objects cannot be messed with.
-		EditMenuManager editMenuManager = GameObject.Find("EditMenuManager").GetComponent<EditMenuManager>();
+		/*EditMenuManager editMenuManager = GameObject.Find("EditMenuManager").GetComponent<EditMenuManager>();
 		if (editMenuManager != null) {
 			editMenuManager.currentEditMode = EditMenuManager.EditMode.None;
-		}
+		}*/
 	}
 
 	public void ShowPopUp (string msg) {
@@ -70,11 +50,7 @@ public class MenuManager : MonoBehaviour {
 		Destroy (obj);
 	}
 
-	public void GoToItemCreation() {
-		SceneManager.LoadScene (2);
-	}
-
-	public void GoToMainGame() {
-		SceneManager.LoadScene (1);
+	public void GoToScene(int sceneNumber) {
+		SceneManager.LoadScene (sceneNumber);
 	}
 }

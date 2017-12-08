@@ -5,87 +5,47 @@ using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour {
 
-	public Dictionary<GameObject, int> MyItems;
-	public Dictionary<GameObject, int> MyMaterials;
+	public Dictionary<Item, int> MyItems;
+	public Dictionary<CraftMaterial, int> MyMaterials;
 
-	public GameObject ItemDisplay;
-	public GameObject ItemDisplayPanel;
-
-	public ShopManager Shop;
-
+	public Dictionary<Item, int> ItemsForSale;
 
 	// Use this for initialization
 	void Start () {
-		MyItems = new Dictionary<GameObject, int> ();
-		MyMaterials = new Dictionary<GameObject, int> ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		MyItems = new Dictionary<Item, int> ();
+		MyMaterials = new Dictionary<CraftMaterial, int> ();
+
+		ItemsForSale = new Dictionary<Item, int> ();
 	}
 
-	public void MakeItem (GameObject itemObj) {
-		//GameObject itemObj = Instantiate (itemObj2);
-
-
-		if (MyItems.ContainsKey (itemObj)) {
-			MyItems [itemObj] = MyItems [itemObj] + 1;
+	public void MakeItem (Item item) {
+		if (MyItems.ContainsKey (item)) {
+			MyItems [item] = MyItems [item] + 1;
 		} else {
-			MyItems.Add (itemObj, 1);
+			MyItems.Add (item, 1);
 		}
-
-		GameObject display = Instantiate (ItemDisplay);
-
-		GameObject Image = display.transform.GetChild (0).gameObject;
-		GameObject Name = display.transform.GetChild (1).gameObject;
-		GameObject Category = display.transform.GetChild (2).gameObject;
-		GameObject Quantity = display.transform.GetChild (3).gameObject;
-		GameObject SellButton = display.transform.GetChild (4).gameObject;
-		GameObject MakeButton = display.transform.GetChild (5).gameObject;
-
-		Item item = itemObj.GetComponent<Item> ();
-
-		Image.GetComponent<Image> ().sprite = item.GetThumbnail ();
-
-		Name.GetComponent<Text> ().text = item.Name;
-
-		string categories = "";
-		int index = 0;
-		foreach (Category C in item.Categories) {
-			categories += C.Name;
-			if (item.Categories.Count > 1 && index < item.Categories.Count - 1)
-				categories += ", ";
-			index++;
-		}
-		Category.GetComponent<Text> ().text = categories;
-
-		Quantity.GetComponent<Text> ().text = "Quantity: " + MyItems[itemObj];
-
-		SellButton.GetComponent<Button>().onClick.AddListener(delegate {SellItem(itemObj);});
-
-		Button mButton = MakeButton.GetComponent<Button> ();
-		mButton.onClick.AddListener(delegate {DuplicateItem(itemObj);});
-		mButton.transform.GetChild (0).gameObject.GetComponent<Text> ().text = "Make Duplicate ($" + item.GetMaterialCost () + ")";
-
-		display.transform.SetParent (ItemDisplayPanel.transform);
 	}
 
-	public void DuplicateItem (GameObject item) {
+	public void DuplicateItem (Item item) {
 	}
 
-	public void SellItem (GameObject item) {
+	public bool SellItem (Item item) {
 		if (MyItems.ContainsKey (item) && MyItems[item] > 0) {
+			item.Sell (500);		//TODO let the user input their own info
+			if (ItemsForSale.ContainsKey (item)) {
+				ItemsForSale [item] += 1;
+			} else {
+				ItemsForSale.Add (item, 1);
+			}
 			MyItems [item] -= 1;
 			if (MyItems [item] == 0)
 				MyItems.Remove (item);
-			item.GetComponent<Item> ().Sell (500);
-			Shop.DisplayItem (item);
+			return true;
 		}
+		return false;
 	}
 
-	public void GetMaterial (GameObject material) {
-		
+	public void GetMaterial (CraftMaterial material) {
 		if (MyMaterials.ContainsKey (material)) {
 			MyMaterials [material] = MyMaterials [material] + 1;
 		} else {
@@ -93,8 +53,8 @@ public class ItemManager : MonoBehaviour {
 		}
 	}
 
-	public bool UseMaterial (GameObject material, int Number = 1) {
-		if (MyMaterials.ContainsKey (material) && MyMaterials[material] <= Number) {
+	public bool UseMaterial (CraftMaterial material, int Number = 1) {
+		if (MyMaterials.ContainsKey(material) && MyMaterials[material] <= Number) {
 			MyMaterials [material] -= Number;
 			if (MyMaterials [material] == 0)
 				MyMaterials.Remove (material);
@@ -102,4 +62,13 @@ public class ItemManager : MonoBehaviour {
 		}
 		return false;
 	}
+
+	public int totalNumberItemsForSale () {
+		int total = 0;
+		foreach (int i in ItemsForSale.Values) {
+			total += i;
+		}
+		return total;
+	}
+
 }
