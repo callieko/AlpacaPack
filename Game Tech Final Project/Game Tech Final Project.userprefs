@@ -1,16 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MenuManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Main Scene/DisplayManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Category.cs" Line="7" Column="47" />
-      <File FileName="Assets/Scripts/ItemManager.cs" Line="24" Column="11" />
-      <File FileName="Assets/Scripts/Main Scene/MyShop.cs" Line="39" Column="59" />
-      <File FileName="Assets/Scripts/MenuManager.cs" Line="39" Column="5" />
-      <File FileName="Assets/Scripts/Main Scene/MaterialShopManager.cs" Line="19" Column="17" />
-      <File FileName="Assets/Scripts/Customers.cs" Line="38" Column="40" />
+      <File FileName="Assets/Scripts/Category.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ItemManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Main Scene/MyShop.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MenuManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Main Scene/MaterialShopManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Customers.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Item Creator Scene/EditMenuManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Item Creator Scene/CraftingManager.cs" Line="102" Column="23" />
-      <File FileName="Assets/Scripts/Item.cs" Line="13" Column="26" />
+      <File FileName="Assets/Scripts/Item Creator Scene/CraftingManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Item.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Main Scene/DisplayManager.cs" Line="39" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
