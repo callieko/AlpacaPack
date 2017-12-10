@@ -7,19 +7,21 @@ public class DisplayManager : MonoBehaviour {
 
 	public Text MoneyDisplay;
 
+	public Text CustomerDisplay;
+
 	public GameObject ItemDisplay;
 	public GameObject ItemDisplayPanel;
 
 	private MainManager m = MainManager.singleton;
 	private MoneyManager wallet;
+	private Customers customers;
 	private ItemManager playerItems;
 
 	// Use this for initialization
 	void Start () {
 		wallet = m.GetComponent<MoneyManager> ();
+		customers = m.GetComponent<Customers> ();
 		playerItems = m.GetComponent<ItemManager> ();
-
-
 	}
 
 	public void AddItem(Item item) {
@@ -58,5 +60,6 @@ public class DisplayManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		MoneyDisplay.text = "$" + wallet.DisplayMoney;
+		CustomerDisplay.text = "" + customers.numOfCustomers + " Customers";
 	}
 }

@@ -6,43 +6,61 @@ using System;
 public class Customers : MonoBehaviour {
 
 	public Category[] categories;
-	public float[] categoryProbabilities;
 
-	public int popularity;
-	public List<Category> CustomerList;
+	public List<List<int>> categoryFunctions;
+	public List<double> categoryPopularity;
 
-	private float total;
+	public double shopPopularity = 10;
+	public double time = 0;
 
-	private ItemManager PlayerItems = MainManager.singleton.GetComponent<ItemManager> ();
+	public int numOfCustomers = 0;
+
+	private ItemManager PlayerItems;
 
 	// Use this for initialization
 	void Start () {
-		// Starting in 1 second repeat every 30 seconds
+		PlayerItems = gameObject.GetComponent<ItemManager> ();
+
+		categoryPopularity = new List<double> ();
+
+		categoryFunctions = new List<List<int>> ();
+		categoryFunctions.Add(new List<int>());
+		categoryFunctions.Add(new List<int>());
+		categoryFunctions.Add(new List<int>());
+
+		foreach (List<int> polys in categoryFunctions) {
+			categoryPopularity.Add (0.0);
+
+			polys.Add (UnityEngine.Random.Range(-4,6));
+			polys.Add (UnityEngine.Random.Range(-4,6));
+			polys.Add (UnityEngine.Random.Range(-4,6));
+		}
+
+		// Starting in 30 second repeat every 30 seconds
 		InvokeRepeating("UpdateFunction", 30.0f, 30.0f);
 
 	}
 
 	private void UpdateFunction() {
-		if (PlayerItems.ItemsForSale.Count > 0) {
-			total = 0;
-			for (int i = 0; i < categoryProbabilities.Length; i++) {
-				float n = UnityEngine.Random.value;
-				categoryProbabilities [i] = total + n;
-				total += n;
-			}
-			popularity = PlayerItems.totalNumberItemsForSale() * 2;
+		time += .1;
+		if (time > 5)
+			time -= 5;
+
+		//shopPopularity = PlayerItems.ItemsForSale.Count;	//temp
+
+		for (int c = 0; c < categoryPopularity.Count; ++c) {
+			categoryPopularity [c] = shopPopularity * (Math.Cos(categoryFunctions[c][0] * Math.Sin(categoryFunctions[c][1] * time 
+				* Math.Sin(categoryFunctions[c][2] * time))) * Math.Cos(categoryFunctions[c][0] * Math.Sin(categoryFunctions[c][1] * time)));
 		}
+		CalculateCustomers ();
 	}
 
-	private Category ChooseCustomer() {
-		float roll = UnityEngine.Random.Range(0.0f, total);
-
-		for (int i = 0; i < categories.Length; ++i) {
-			if (roll <= categoryProbabilities [i]) {
-				return categories[i];
-			}
+	private void CalculateCustomers() {
+		numOfCustomers = 0;
+		foreach (double popularity in categoryPopularity) {
+			for (int c = 0; c < popularity; c++)
+				++numOfCustomers;
 		}
-		return categories [categories.Length - 1];
 	}
 
 }
