@@ -14,6 +14,8 @@ public class MoneyManager : MonoBehaviour {
 	void Start () {
 		CurrentMoney = 50000;
 		AllTimeMoney = 50000;
+
+		DisplayMoney = CurrentMoney;
 	}
 
 	public bool Transaction (double MoneyChange) {

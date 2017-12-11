@@ -56,7 +56,7 @@ public class MaterialShopManager : MonoBehaviour {
 	}
 
 	public void ShowPopUp (string msg) {
-		GameObject parentCanvas = MaterialDisplayPanel.transform.parent.parent.parent.gameObject;
+		GameObject parentCanvas = MaterialDisplayPanel.transform.parent.parent.parent.parent.parent.gameObject;
 		Vector3 center = parentCanvas.GetComponent<RectTransform> ().position;
 		GameObject window = Instantiate (PopUpWindow);//, new Vector3(center[0], center[1], 0), new Quaternion(0,0,0,0));
 		window.transform.GetChild (0).GetComponent<Text> ().text = msg;
