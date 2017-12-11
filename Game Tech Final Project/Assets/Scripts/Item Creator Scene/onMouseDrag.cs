@@ -53,6 +53,7 @@ public class onMouseDrag : MonoBehaviour {
 				break;
 			case EditMenuManager.EditMode.Remove:
 				Destroy(gameObject);
+				// INSERT HERE CODE TO CALL CRAFTINGMANAGER.CS 'S UNUSEMATERIAL() METHOD.
 				break;
 		}
 	}
