@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 82edcb7f5cc6e49f7a970ca3c4dbc548
+timeCreated: 1512965658
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Antipasto
+  fontNames:
+  - Antipasto
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0c452e84215904c59b96ee608de35760, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
