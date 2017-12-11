@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Category.cs" />
      <Compile Include="Assets\Scripts\CraftMaterial.cs" />
+     <Compile Include="Assets\Scripts\Customer.cs" />
      <Compile Include="Assets\Scripts\Customers.cs" />
      <Compile Include="Assets\Scripts\Item Creator Scene\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Item Creator Scene\CraftingManager.cs" />

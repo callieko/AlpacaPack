@@ -60,6 +60,6 @@ public class DisplayManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		MoneyDisplay.text = "$" + wallet.DisplayMoney;
-		CustomerDisplay.text = "" + customers.numOfCustomers + " Customers";
+		CustomerDisplay.text = "" + customers.CurrentCustomers.Count + " Customers";
 	}
 }

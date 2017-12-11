@@ -1,12 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Item Creator Scene/CraftingManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Customers.cs">
     <Files>
-      <File FileName="Assets/Scripts/Item Creator Scene/EditMenuManager.cs" Line="15" Column="10" />
-      <File FileName="Assets/Scripts/Item Creator Scene/onMouseDrag.cs" Line="42" Column="71" />
       <File FileName="Assets/Scripts/Item Creator Scene/CraftingManager.cs" Line="84" Column="32" />
-      <File FileName="Assets/Scripts/MoneyManager.cs" Line="10" Column="2" />
+      <File FileName="Assets/Scripts/MoneyManager.cs" Line="18" Column="31" />
       <File FileName="Assets/Scripts/MenuManager.cs" Line="28" Column="23" />
+      <File FileName="Assets/Scripts/Main Scene/DisplayManager.cs" Line="63" Column="63" />
+      <File FileName="Assets/Scripts/Customers.cs" Line="77" Column="6" />
+      <File FileName="Assets/Scripts/Customer.cs" Line="10" Column="19" />
+      <File FileName="Assets/Scripts/ItemManager.cs" Line="79" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

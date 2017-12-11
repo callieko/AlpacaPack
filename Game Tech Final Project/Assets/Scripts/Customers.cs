@@ -13,12 +13,13 @@ public class Customers : MonoBehaviour {
 	public double shopPopularity = 10;
 	public double time = 0;
 
-	public int numOfCustomers = 0;
+	public List<Customer> CurrentCustomers;
 
 	private ItemManager PlayerItems;
 
 	// Use this for initialization
 	void Start () {
+		CurrentCustomers = new List<Customer> ();
 		PlayerItems = gameObject.GetComponent<ItemManager> ();
 
 		categoryPopularity = new List<double> ();
@@ -42,6 +43,15 @@ public class Customers : MonoBehaviour {
 	}
 
 	private void UpdateFunction() {
+		List<Item> itemsForSale = new List<Item> (PlayerItems.ItemsForSale.Keys);
+		foreach (Customer c in CurrentCustomers) {
+			if (c.Buy () && PlayerItems.ItemsForSale.Count > 0) {
+				if (PlayerItems.SellItem(itemsForSale[0]))
+					itemsForSale.RemoveAt(0);
+			}
+		}
+		CurrentCustomers.Clear ();
+
 		time += .1;
 		if (time > 5)
 			time -= 5;
@@ -56,10 +66,16 @@ public class Customers : MonoBehaviour {
 	}
 
 	private void CalculateCustomers() {
-		numOfCustomers = 0;
-		foreach (double popularity in categoryPopularity) {
-			for (int c = 0; c < popularity; c++)
-				++numOfCustomers;
+		for (int cat = 0; cat < categoryPopularity.Count; cat++) {
+			if (PlayerItems.numberOfItemsInCategory (categories [cat]) > 0) {
+				double popularity = categoryPopularity [cat];
+				for (int r = 0; r < popularity; r++) {
+					Customer person = ScriptableObject.CreateInstance<Customer> ();
+					person.category = categories [cat];
+					person.willingness = UnityEngine.Random.Range(0,50)/100.0;
+					CurrentCustomers.Add (person);
+				}
+			}
 		}
 	}
 

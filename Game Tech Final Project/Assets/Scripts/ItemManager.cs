@@ -71,4 +71,13 @@ public class ItemManager : MonoBehaviour {
 		return total;
 	}
 
+	public int numberOfItemsInCategory (Category cat) {
+		int total = 0;
+		foreach (Item i in ItemsForSale.Keys) {
+			if (i.category.name == cat.name)
+				++total;
+		}
+		return total;
+	}
+
 }
