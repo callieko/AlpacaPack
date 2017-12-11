@@ -26,7 +26,7 @@ public class onMouseDrag : MonoBehaviour {
 	// Scaling object: (https://stackoverflow.com/questions/19034528/game-in-unity3d-scaling-objects-with-mouse-in-c-sharp)
 	void OnMouseDrag() {
 		switch (editMenuManager.currentEditMode) {
-			case EditMenuManager.EditMode.None:
+		case EditMenuManager.EditMode.None:
 				break;
 			case EditMenuManager.EditMode.Move:
 				Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
@@ -39,6 +39,7 @@ public class onMouseDrag : MonoBehaviour {
 				transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 				break;
 			case EditMenuManager.EditMode.Scale:
+				// Currently doing scale based upon the change in x position only.
 				if (starting > Input.mousePosition.x) {
 					Vector3 v3Scale = new Vector3 (shrinkScale, shrinkScale, shrinkScale);
 					transform.localScale = Vector3.Lerp (transform.localScale, v3Scale, Time.deltaTime);
@@ -51,6 +52,7 @@ public class onMouseDrag : MonoBehaviour {
 			case EditMenuManager.EditMode.Snap:
 				break;
 			case EditMenuManager.EditMode.Remove:
+				Destroy(gameObject);
 				break;
 		}
 	}

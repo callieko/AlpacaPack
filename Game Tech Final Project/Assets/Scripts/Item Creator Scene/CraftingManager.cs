@@ -11,6 +11,7 @@ public class CraftingManager : MonoBehaviour {
 	public GameObject MaterialDisplayPanel;
 	private MenuManager menuManager;
 	public EditMenuManager editMenuManager;
+	public onMouseDrag onMouseDragFile;
 
 	public List<CraftMaterial> CurrentlyUsedMaterials;
 
@@ -71,12 +72,16 @@ public class CraftingManager : MonoBehaviour {
 		objMesh.mesh = materialObject.ObjectMesh;
 		obj.transform.SetPositionAndRotation (new Vector3 (0, 0, 0), new Quaternion(0,0,0,1));
 
-		//The new object needs to be manually given the menu object
+		// The new object needs to be manually given it's mesh type
+		MeshCollider objCollider = obj.GetComponent<MeshCollider> ();
+		objCollider.sharedMesh = materialObject.ObjectMesh;
+
+		// The new object needs to be manually given the menu object
 		onMouseDrag objOND = obj.GetComponent<onMouseDrag> ();
 		objOND.editMenuManager = editMenuManager;
 	}
 		
-	//This doesn't work right now
+	// This doesn't work right now
 	void UnuseMaterial(GameObject obj, GameObject listing) {
 		CraftMaterial materialObject = obj.GetComponent<CraftMaterial>();
 

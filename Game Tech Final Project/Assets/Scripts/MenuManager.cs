@@ -26,17 +26,6 @@ public class MenuManager : MonoBehaviour {
 			currentMenu = nextMenu;
 		else
 			currentMenu = null;
-
-
-		//TODO HEY LINH! This part is causing a Null Pointer Exception in scenes other than the Item Creator.
-		//If you could find another wasy to do this that'd be ideal
-
-		// If the EditMenuManager menu was open and is toggled off,
-		// reset the currentEditMode to None to ensure the objects cannot be messed with.
-		/*EditMenuManager editMenuManager = GameObject.Find("EditMenuManager").GetComponent<EditMenuManager>();
-		if (editMenuManager != null) {
-			editMenuManager.currentEditMode = EditMenuManager.EditMode.None;
-		}*/
 	}
 
 	public void ShowPopUp (string msg) {
