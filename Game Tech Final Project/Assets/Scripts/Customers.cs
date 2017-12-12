@@ -19,12 +19,22 @@ public class Customers : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		categories [0] = ScriptableObject.CreateInstance<Category> ();
+		categories [0].name = "Birdhouse";
+		categories [1] = ScriptableObject.CreateInstance<Category> ();
+		categories [1].name = "Jewelry";
+		categories [2] = ScriptableObject.CreateInstance<Category> ();
+		categories [2].name = "Sculpture";
+		categories [3] = ScriptableObject.CreateInstance<Category> ();
+		categories [3].name = "Paper Weight";
+
 		CurrentCustomers = new List<Customer> ();
 		PlayerItems = gameObject.GetComponent<ItemManager> ();
 
 		categoryPopularity = new List<double> ();
 
 		categoryFunctions = new List<List<int>> ();
+		categoryFunctions.Add(new List<int>());
 		categoryFunctions.Add(new List<int>());
 		categoryFunctions.Add(new List<int>());
 		categoryFunctions.Add(new List<int>());
@@ -43,11 +53,9 @@ public class Customers : MonoBehaviour {
 	}
 
 	private void UpdateFunction() {
-		List<Item> itemsForSale = new List<Item> (PlayerItems.ItemsForSale.Keys);
 		foreach (Customer c in CurrentCustomers) {
 			if (c.Buy () && PlayerItems.ItemsForSale.Count > 0) {
-				if (PlayerItems.SellItem(itemsForSale[0]))
-					itemsForSale.RemoveAt(0);
+				PlayerItems.SellItem (c.ChooseItemToBuy (PlayerItems.ItemsForSale));
 			}
 		}
 		CurrentCustomers.Clear ();
@@ -59,14 +67,14 @@ public class Customers : MonoBehaviour {
 		//shopPopularity = PlayerItems.ItemsForSale.Count;	//temp
 
 		for (int c = 0; c < categoryPopularity.Count; ++c) {
-			categoryPopularity [c] = shopPopularity * (Math.Cos(categoryFunctions[c][0] * Math.Sin(categoryFunctions[c][1] * time 
+			categoryPopularity [c] = shopPopularity * Math.Abs(Math.Cos(categoryFunctions[c][0] * Math.Sin(categoryFunctions[c][1] * time 
 				* Math.Sin(categoryFunctions[c][2] * time))) * Math.Cos(categoryFunctions[c][0] * Math.Sin(categoryFunctions[c][1] * time)));
 		}
 		CalculateCustomers ();
 	}
 
 	private void CalculateCustomers() {
-		for (int cat = 0; cat < categoryPopularity.Count; cat++) {
+		for (int cat = 0; cat < categories.Length; cat++) {
 			if (PlayerItems.numberOfItemsInCategory (categories [cat]) > 0) {
 				double popularity = categoryPopularity [cat];
 				for (int r = 0; r < popularity; r++) {

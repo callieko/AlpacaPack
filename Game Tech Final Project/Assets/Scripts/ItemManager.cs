@@ -30,7 +30,7 @@ public class ItemManager : MonoBehaviour {
 	}
 
 	public bool SellItem (Item item) {
-		if (MyItems.ContainsKey (item) && MyItems[item] > 0) {
+		if (item != null && MyItems.ContainsKey (item) && MyItems[item] > 0) {
 			item.Sell (500);		//TODO let the user input their own info
 			if (ItemsForSale.ContainsKey (item)) {
 				ItemsForSale [item] += 1;

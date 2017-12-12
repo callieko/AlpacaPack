@@ -40,6 +40,7 @@ public class MenuManager : MonoBehaviour {
 	}
 
 	public void GoToScene(int sceneNumber) {
+		print ("Going to scene " + sceneNumber);
 		SceneManager.LoadScene (sceneNumber);
 	}
 }

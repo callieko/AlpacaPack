@@ -14,4 +14,12 @@ public class Customer : ScriptableObject {
 		}
 		return false;
 	}
+
+	public Item ChooseItemToBuy (Dictionary<Item, int> ItemsForSale) {
+		foreach (Item i in ItemsForSale.Keys) {
+			if (i.category.name == category.name)
+				return i;
+		}
+		return null;
+	}
 }
