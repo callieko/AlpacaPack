@@ -34,8 +34,8 @@ public class onMouseDrag : MonoBehaviour {
 				transform.position = objectPos;
 				break;
 			case EditMenuManager.EditMode.Rotate:
-				yaw += Input.GetAxis("Mouse X") * rotationSpeed;
-				pitch -= Input.GetAxis("Mouse Y") * rotationSpeed;
+				yaw -= Input.GetAxis("Mouse X") * rotationSpeed;
+				pitch += Input.GetAxis("Mouse Y") * rotationSpeed;
 				transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 				break;
 			case EditMenuManager.EditMode.Scale:
