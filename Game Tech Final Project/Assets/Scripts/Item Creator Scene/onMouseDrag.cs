@@ -26,8 +26,8 @@ public class onMouseDrag : MonoBehaviour {
 	// Scaling object: (https://stackoverflow.com/questions/19034528/game-in-unity3d-scaling-objects-with-mouse-in-c-sharp)
 	void OnMouseDrag() {
 		switch (editMenuManager.currentEditMode) {
-		case EditMenuManager.EditMode.None:
-				break;
+			case EditMenuManager.EditMode.None:
+					break;
 			case EditMenuManager.EditMode.Move:
 				Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
 				Vector3 objectPos = Camera.main.ScreenToWorldPoint (mousePos);
@@ -56,5 +56,29 @@ public class onMouseDrag : MonoBehaviour {
 				// INSERT HERE CODE TO CALL CRAFTINGMANAGER.CS 'S UNUSEMATERIAL() METHOD.
 				break;
 		}
+	}
+
+	void OnMouseDown()
+	{
+		print ("OnMouseDown() activiated");
+		switch (editMenuManager.currentEditMode) {
+			case EditMenuManager.EditMode.None:
+				print ("OnMouseDown() no mode");
+				break;
+			case EditMenuManager.EditMode.Move:
+				// ADD THE MOVE MANIPULATOR HERE
+				// ADD CODE TO ADD MANIPULATOR AS CHILD OF OBJECT CLICKED ON
+				print ("OnMouseDown() move");
+				Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
+				Vector3 objectPos = Camera.main.ScreenToWorldPoint (mousePos);
+				transform.position = objectPos;
+				break;
+			case EditMenuManager.EditMode.Scale:
+				// ADD THE SCALE MANIPULATOR HERE
+				// ADD CODE TO ADD MANIPULATOR AS CHILD OF OBJECT CLICKED ON
+				print ("OnMouseDown() scale");
+				break;
+		}
+		print ("OnMouseDrag() end");
 	}
 }
