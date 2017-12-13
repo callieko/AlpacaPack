@@ -16,6 +16,11 @@ public class onMouseDrag : MonoBehaviour {
 	private float shrinkScale = 0.5f;
 	private float enlargeScale = 2f;
 
+	public GameObject moveManipulator;
+	public GameObject scaleManipulator;
+	private GameObject createdMoveManip;
+	private GameObject createdScaleManip;
+
 	void Start () {
 		starting = Input.mousePosition.x;
 	}
@@ -61,24 +66,32 @@ public class onMouseDrag : MonoBehaviour {
 	void OnMouseDown()
 	{
 		print ("OnMouseDown() activiated");
+
+		Destroy (createdMoveManip);
+		Destroy (createdScaleManip);
+
+		float scaleX = gameObject.transform.localScale.x * 0.2f;
+		float scaleY = gameObject.transform.localScale.y * 0.2f;
+		float scaleZ = gameObject.transform.localScale.z * 0.2f;
+
 		switch (editMenuManager.currentEditMode) {
-			case EditMenuManager.EditMode.None:
-				print ("OnMouseDown() no mode");
-				break;
-			case EditMenuManager.EditMode.Move:
-				// ADD THE MOVE MANIPULATOR HERE
-				// ADD CODE TO ADD MANIPULATOR AS CHILD OF OBJECT CLICKED ON
-				print ("OnMouseDown() move");
-				Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
-				Vector3 objectPos = Camera.main.ScreenToWorldPoint (mousePos);
-				transform.position = objectPos;
-				break;
-			case EditMenuManager.EditMode.Scale:
-				// ADD THE SCALE MANIPULATOR HERE
-				// ADD CODE TO ADD MANIPULATOR AS CHILD OF OBJECT CLICKED ON
-				print ("OnMouseDown() scale");
-				break;
+		case EditMenuManager.EditMode.None:
+			print ("OnMouseDown() no mode");
+			break;
+		case EditMenuManager.EditMode.Move:
+			print ("OnMouseDown() move");
+			createdMoveManip = Instantiate (moveManipulator, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+			createdMoveManip.transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
+			createdMoveManip.transform.SetParent (gameObject.transform);
+			break;
+		case EditMenuManager.EditMode.Scale:
+			print ("OnMouseDown() scale");
+			createdScaleManip = Instantiate (scaleManipulator, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+			createdScaleManip.transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
+			createdScaleManip.transform.SetParent (gameObject.transform);
+			break;
 		}
 		print ("OnMouseDrag() end");
 	}
+
 }

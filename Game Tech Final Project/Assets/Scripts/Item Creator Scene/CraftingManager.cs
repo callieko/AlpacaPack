@@ -12,6 +12,8 @@ public class CraftingManager : MonoBehaviour {
 	private MenuManager menuManager;
 	public EditMenuManager editMenuManager;
 	public onMouseDrag onMouseDragFile;
+	public GameObject moveManipulator;
+	public GameObject scaleManipulator;
 
 	public List<CraftMaterial> CurrentlyUsedMaterials;
 
@@ -82,6 +84,8 @@ public class CraftingManager : MonoBehaviour {
 		// The new object needs to be manually given the menu object
 		onMouseDrag objOND = obj.GetComponent<onMouseDrag> ();
 		objOND.editMenuManager = editMenuManager;
+		objOND.moveManipulator = moveManipulator;
+		objOND.scaleManipulator = scaleManipulator;
 	}
 		
 	// This doesn't work right now
