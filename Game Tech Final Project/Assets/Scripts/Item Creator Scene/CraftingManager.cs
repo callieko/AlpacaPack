@@ -76,6 +76,9 @@ public class CraftingManager : MonoBehaviour {
 		MeshCollider objCollider = obj.GetComponent<MeshCollider> ();
 		objCollider.sharedMesh = materialObject.ObjectMesh;
 
+		MeshRenderer objRenderer = obj.GetComponent<MeshRenderer> ();
+		objRenderer.material = materialObject.ObjectMaterial;
+
 		// The new object needs to be manually given the menu object
 		onMouseDrag objOND = obj.GetComponent<onMouseDrag> ();
 		objOND.editMenuManager = editMenuManager;

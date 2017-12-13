@@ -53,4 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Sphere
   ObjectMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  ObjectMaterial: {fileID: 2100000, guid: 912272b6a2338425b8aaa281fc054bf0, type: 2}
   Value: 200

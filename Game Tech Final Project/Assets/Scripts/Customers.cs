@@ -34,10 +34,8 @@ public class Customers : MonoBehaviour {
 		categoryPopularity = new List<double> ();
 
 		categoryFunctions = new List<List<int>> ();
-		categoryFunctions.Add(new List<int>());
-		categoryFunctions.Add(new List<int>());
-		categoryFunctions.Add(new List<int>());
-		categoryFunctions.Add(new List<int>());
+		for (int i = 0; i < categories.Length; ++i)
+			categoryFunctions.Add(new List<int>());
 
 		foreach (List<int> polys in categoryFunctions) {
 			categoryPopularity.Add (0.0);

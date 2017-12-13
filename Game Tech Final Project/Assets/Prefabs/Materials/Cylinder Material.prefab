@@ -53,4 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Cylinder
   ObjectMesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  ObjectMaterial: {fileID: 2100000, guid: 2177153df2d4047aeb5c34c7be892d4b, type: 2}
   Value: 200

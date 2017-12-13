@@ -10,6 +10,7 @@ public class CraftMaterial : MonoBehaviour {
 
 	public string Name;
 	public Mesh ObjectMesh;
+	public Material ObjectMaterial;
 	public float Value = 0;
 
 	// Use this for initialization
@@ -24,7 +25,9 @@ public class CraftMaterial : MonoBehaviour {
 	public Sprite GetThumbnail() {
 		#if UNITY_EDITOR
 		Texture2D texture = UnityEditor.AssetPreview.GetAssetPreview (ObjectMesh);
-		return Sprite.Create(texture, new Rect(0,0,texture.width,texture.height), new Vector2(0.5f,0.5f));
+		if (texture != null)
+			return Sprite.Create(texture, new Rect(0,0,texture.width,texture.height), new Vector2(0.5f,0.5f));
+		return null;
 		#else
 
 		return null;

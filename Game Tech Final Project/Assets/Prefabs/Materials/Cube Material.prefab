@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814d2289e9edb489ab2a56e26d9d3900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Cube
-  ObjectMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  Name: Pyramid
+  ObjectMesh: {fileID: 4300000, guid: 4305f7340e22845f18f45929665a6529, type: 3}
+  ObjectMaterial: {fileID: 2100000, guid: 912272b6a2338425b8aaa281fc054bf0, type: 2}
   Value: 200
