@@ -22,26 +22,25 @@ public class CameraManager : MonoBehaviour {
 			isPanning = true;
 			lastPosition = Input.mousePosition;
 
-			print ("height " + (Screen.height / 2 - 10));
 			print ("THIS IS POSITIONAL DATA HERE: " + lastPosition.x + " " + lastPosition.y);
 		}
 
 		if (isPanning) 
 		{
-			if (point.x < (Screen.width / 2 + 10))
+			if (lastPosition.x > (Screen.width / 2 + 50))
 				yaw = 1.0f;
-			else if (point.x > (Screen.width / 2 - 10))
+			else if (lastPosition.x < (Screen.width / 2 - 50))
 				yaw = -1.0f;
 			else
 				yaw = 0.0f;
 
-			if (point.y < (Screen.height / 2 - 10))
+			if (lastPosition.y > (Screen.height / 2 - 50))
 				pitch = 1.0f;
-			else if (point.y > (Screen.height / 2 + 10))
+			else if (lastPosition.y < (Screen.height / 2 + 50))
 				pitch = -1.0f;
 			else
 				pitch = 0.0f;
-			
+
 			transform.RotateAround (point, new Vector3 (pitch, yaw, 0.0f), 10 * Time.deltaTime * rotationSpeed);
 		}
 
