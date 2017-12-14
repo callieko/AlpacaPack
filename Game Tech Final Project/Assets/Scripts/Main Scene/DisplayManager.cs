@@ -17,11 +17,17 @@ public class DisplayManager : MonoBehaviour {
 	private Customers customers;
 	private ItemManager playerItems;
 
+	private MyShop shop;
+
 	// Use this for initialization
 	void Start () {
 		wallet = m.GetComponent<MoneyManager> ();
 		customers = m.GetComponent<Customers> ();
 		playerItems = m.GetComponent<ItemManager> ();
+		shop = gameObject.GetComponent<MyShop> ();
+		foreach (Item i in playerItems.MyItems.Keys) {
+			AddItem (i);
+		}
 	}
 
 	public void AddItem(Item item) {
@@ -38,14 +44,15 @@ public class DisplayManager : MonoBehaviour {
 
 		Name.GetComponent<Text> ().text = item.Name;
 
-		string categories = Category.name;
-		Category.GetComponent<Text> ().text = categories;
+		Category.GetComponent<Text> ().text = item.category.Name;
 
 		Quantity.GetComponent<Text> ().text = "Quantity: " + playerItems.MyItems [item];
 
 		SellButton.GetComponent<Button> ().onClick.AddListener (delegate {
 			playerItems.SellItem (item);
-
+			if (!playerItems.MyItems.ContainsKey(item))
+				Destroy(display);
+			shop.DisplayItem(item);
 		});
 
 		Button mButton = MakeButton.GetComponent<Button> ();

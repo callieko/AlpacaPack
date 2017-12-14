@@ -52,7 +52,7 @@ public class Customers : MonoBehaviour {
 
 	private void UpdateFunction() {
 		foreach (Customer c in CurrentCustomers) {
-			if (c.Buy () && PlayerItems.ItemsForSale.Count > 0) {
+			if (c.Buy () && PlayerItems.numberOfItemsInCategory (c.category) > 0) {
 				PlayerItems.SellItem (c.ChooseItemToBuy (PlayerItems.ItemsForSale));
 			}
 		}

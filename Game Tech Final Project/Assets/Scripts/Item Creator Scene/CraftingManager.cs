@@ -9,6 +9,10 @@ public class CraftingManager : MonoBehaviour {
 
 	public GameObject MaterialListing;
 	public GameObject MaterialDisplayPanel;
+	public GameObject Item;
+
+	public GameObject SaveWindow;
+
 	private MenuManager menuManager;
 	public EditMenuManager editMenuManager;
 	public onMouseDrag onMouseDragFile;
@@ -70,6 +74,7 @@ public class CraftingManager : MonoBehaviour {
 		menuManager.ChangeMenu (MaterialDisplayPanel.transform.parent.parent.parent.gameObject);
 
 		GameObject obj = Instantiate (SceneObjectPrefab);
+		obj.transform.SetParent (Item.transform);
 		MeshFilter objMesh = obj.GetComponent<MeshFilter> ();
 		objMesh.mesh = materialObject.ObjectMesh;
 		obj.transform.SetPositionAndRotation (new Vector3 (0, 0, 0), new Quaternion(0,0,0,1));
@@ -108,10 +113,28 @@ public class CraftingManager : MonoBehaviour {
 		Destroy (obj);
 	}
 
-	public void SaveItem (GameObject obj) {
-		Item item = ScriptableObject.CreateInstance<Item>();
-		item.Materials = CurrentlyUsedMaterials;
-		//item.Thumbnail = ;
-		PlayerItems.MakeItem(item);
+	public void SaveItem () {
+		InputField NameField = SaveWindow.transform.GetChild (2).GetComponent<InputField> ();
+		//Dropdown Categories = SaveWindow.transform.GetChild (4).GetComponent<Dropdown> ();
+		InputField PriceField = SaveWindow.transform.GetChild (6).GetComponent<InputField> ();
+
+		//TODO Category dropdown
+
+		Item i = ScriptableObject.CreateInstance<Item>();
+
+		i.Name = NameField.text;
+
+		try {   
+			double priceInput = double.Parse(PriceField.text);
+			i.Sell (priceInput);
+		} catch {
+			print ("Input Invalid!");
+		}
+
+		i.Materials = CurrentlyUsedMaterials;
+		i.Meshes = Item;
+		i.category = ScriptableObject.CreateInstance<Category> ();
+		i.category.name = "Paper Weight";
+		PlayerItems.MakeItem(i);
 	}
 }

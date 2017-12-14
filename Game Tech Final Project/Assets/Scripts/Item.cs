@@ -11,6 +11,7 @@ public class Item : ScriptableObject {
 	public string Name = "Default Item Name";
 	public Sprite Thumbnail;
 	public Category category;
+	public GameObject Meshes;
 	public List<CraftMaterial> Materials = new List<CraftMaterial>();
 
 	private double salePrice;
@@ -29,18 +30,16 @@ public class Item : ScriptableObject {
 	}
 		
 	public Sprite GetThumbnail() {
-		/*#if UNITY_EDITOR
-		Texture2D texture = UnityEditor.AssetPreview.GetAssetPreview (ObjectMesh);
+		#if UNITY_EDITOR
+		Texture2D texture = UnityEditor.AssetPreview.GetAssetPreview (Meshes);
 		if (texture == null) {
-			//print ("Texture is null!");
-			texture = UnityEditor.AssetPreview.GetMiniThumbnail (ObjectMesh);
+			texture = UnityEditor.AssetPreview.GetMiniThumbnail (Meshes);
 		}
-		return Sprite.Create(texture, new Rect(0,0,texture.width,texture.height), new Vector2(0.5f,0.5f));
+		if (texture != null)
+			return Sprite.Create(texture, new Rect(0,0,texture.width,texture.height), new Vector2(0.5f,0.5f));
 		#else
-
+		#endif
 		return null;
-		#endif*/
-		return Thumbnail;
 	}
 
 
