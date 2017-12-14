@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class ScaleManager : MonoBehaviour {
 
-	public GameObject sphere;
-	float distance = 10;
+	// Variables for scale
+	private float starting = 0f;
+	private float shrinkScale = 0.5f;
+	private float enlargeScale = 2f;
 
-	// On mouse drag (https://www.youtube.com/watch?v=pK1CbnE2VsI)
+	void Start () {
+		starting = Input.mousePosition.x;
+	}
+
 	void OnMouseDrag() {
-		Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
-		Vector3 objectPos = Camera.main.ScreenToWorldPoint (mousePos);
+		print ("ScaleManager");
 
-		sphere.transform.position = objectPos;
+		if (starting > Input.mousePosition.x) {
+			Vector3 v3Scale = new Vector3 (shrinkScale, shrinkScale, shrinkScale);
+			transform.localScale = Vector3.Lerp (transform.localScale, v3Scale, Time.deltaTime);
+		} else if (starting < Input.mousePosition.x) {
+			Vector3 v3Scale = new Vector3 (enlargeScale, enlargeScale, enlargeScale);
+			transform.localScale = Vector3.Lerp (transform.localScale, v3Scale, Time.deltaTime);
+		}
+		starting = Input.mousePosition.x;
 	}
 
 }

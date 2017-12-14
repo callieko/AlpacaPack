@@ -14,7 +14,7 @@ public class CraftingManager : MonoBehaviour {
 	public onMouseDrag onMouseDragFile;
 	public GameObject moveManipulator;
 	public GameObject scaleManipulator;
-
+	public bool manipulator;
 	public List<CraftMaterial> CurrentlyUsedMaterials;
 
 	private ItemManager PlayerItems;

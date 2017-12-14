@@ -58,10 +58,8 @@
      <Compile Include="Assets\Scripts\Item Creator Scene\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Item Creator Scene\CraftingManager.cs" />
      <Compile Include="Assets\Scripts\Item Creator Scene\EditMenuManager.cs" />
-     <Compile Include="Assets\Scripts\Item Creator Scene\MouseManager.cs" />
      <Compile Include="Assets\Scripts\Item Creator Scene\MoveManager.cs" />
      <Compile Include="Assets\Scripts\Item Creator Scene\onMouseDrag.cs" />
-     <Compile Include="Assets\Scripts\Item Creator Scene\RotateManager.cs" />
      <Compile Include="Assets\Scripts\Item Creator Scene\ScaleManager.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\ItemManager.cs" />
