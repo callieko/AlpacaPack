@@ -3,59 +3,54 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CameraManager : MonoBehaviour {
-	private float rotationSpeed = 10.0f;//a speed modifier
-	private Vector3 point;//the coord to the point where the camera looks at
-	private Vector3 lastPosition;
-	private bool isPanning;
+
+	private Vector3 center;
+	private bool movingCamera;
+	private Vector3 lastMousePosition;
+	private float rotationSpeed = 10.0f;
 	private float pitch = 0.0f;
 	private float yaw = 0.0f;
 
-	void Start () {//Set up things on the start method
-		point = new Vector3(0,0,0);
-		transform.LookAt(point);//makes the camera look to it
+	void Start () {
+		center = new Vector3(0,0,0);
+		transform.LookAt(center);
 	}
 
 	void updateCamera() {
-		if (Input.GetMouseButtonDown (1)) 
-		{
-			//right click was pressed
-			isPanning = true;
-			lastPosition = Input.mousePosition;
-
-			print ("THIS IS POSITIONAL DATA HERE: " + lastPosition.x + " " + lastPosition.y);
-			print ("Width change increment when larger than " + (Screen.width / 2 + 50));
-			print ("Width change decrement when smaller than " + (Screen.width / 2 - 50));
-			print ("Height change increment when larger than " + (Screen.height / 2 - 50));
-			print ("Height change decrement when smaller than " + (Screen.height / 2 + 50));
+		// If right mouse button is pressed start movement
+		if (Input.GetMouseButtonDown (1)) {
+			movingCamera = true;
+			lastMousePosition = Input.mousePosition;
 		}
 
-		if (isPanning) 
-		{
-			if (lastPosition.x > (Screen.width / 2 - 80) && lastPosition.x < (Screen.width / 2 + 80))
+		if (movingCamera) {
+			// The movement based on the x-position
+			if (lastMousePosition.x > (Screen.width / 2 - 80) && lastMousePosition.x < (Screen.width / 2 + 80))
 				yaw = 0.0f;
-			else if (lastPosition.x > (Screen.width / 2 + 80))
+			else if (lastMousePosition.x > (Screen.width / 2 + 80))
 				yaw = -1.0f;
 			else
 				yaw = 1.0f;
 
-			if (lastPosition.y > (Screen.height / 2 - 80) && lastPosition.y < (Screen.height / 2 + 80))
+			// The movement based on the y-position
+			if (lastMousePosition.y > (Screen.height / 2 - 80) && lastMousePosition.y < (Screen.height / 2 + 80))
 				pitch = 0.0f;
-			else if (lastPosition.y > (Screen.height / 2 + 80))
+			else if (lastMousePosition.y > (Screen.height / 2 + 80))
 				pitch = 1.0f;
 			else
 				pitch = -1.0f;
 
-			transform.RotateAround (point, new Vector3 (pitch, yaw, 0.0f), 10 * Time.deltaTime * rotationSpeed);
+			// Rotate camera around the center by 10 degrees in the direction of the new Vector3.
+			transform.RotateAround (center, new Vector3 (pitch, yaw, 0.0f), 10 * Time.deltaTime * rotationSpeed);
 		}
 
-		// cancel on button release
-		if (!Input.GetMouseButton (1)) 
-		{
-			isPanning = false;
+		// If right mouse button is unpressed end movement
+		if (!Input.GetMouseButton (1)) {
+			movingCamera = false;
 		}
 	}
 
-	void Update () {//makes the camera rotate around "point" coords, rotating around its Y axis, 10 degrees per second times the speed modifier
+	void Update () {
 		updateCamera();
 	}
 
