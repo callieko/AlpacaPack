@@ -499,7 +499,6 @@ MonoBehaviour:
   MaterialListing: {fileID: 1849171991530158, guid: 86f16a1d1048e4340b8fbdaeb8e8fe07,
     type: 2}
   MaterialsForSale:
-  - {fileID: 114036008912652646, guid: 8b86dcc5826164feeaea9526e40b6a09, type: 2}
   - {fileID: 114036008912652646, guid: 509bbda547f26408a90aa374eec45a29, type: 2}
   - {fileID: 114415646288078070, guid: ac925f100bc7846bc8f4b5b751e32f5a, type: 2}
   - {fileID: 114334298911610098, guid: 04203db3b831746128f6dfacdba39f24, type: 2}
